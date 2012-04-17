@@ -1,0 +1,13 @@
+logs
+project/project
+project/target
+target
+tmp
+.history
+dist
+compiler.iml
+compiler.ipr
+compiler.iws
+compiler.sh
+
+

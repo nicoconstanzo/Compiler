@@ -1,0 +1,42 @@
+package compiler.tree;
+
+import compiler.tree.symbol.Symbol;
+import compiler.tree.symbol.SymbolTable;
+import compiler.tree.types.Type;
+import org.antlr.runtime.Token;
+
+import java.util.Stack;
+
+/**
+ * Created by IntelliJ IDEA.
+ * User: NoePodesta
+ * Date: 22/03/12
+ * Time: 19:47
+ * To change this template use File | Settings | File Templates.
+ */
+public class Declaration extends Node {
+
+ 
+
+    public Declaration(Token token) {
+        super(token);
+    }
+
+    public void execute(Stack<Object> stack){
+        getChild(1).execute(stack);
+
+    }
+
+    public void analyze(SymbolTable symbolTable){
+        Type type = getChild(1).getTypeDef();
+        Symbol symbol = new Symbol(null,type);
+        String name = getChild(0).getText();
+        symbolTable.declare(name,symbol);
+        
+        
+        
+
+    }
+
+
+}

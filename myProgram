@@ -1,0 +1,6 @@
+a : Integer
+b : Float
+a := 3
+b := 50.4
+b := a + b
+print a + b * 2
