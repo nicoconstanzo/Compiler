@@ -1,11 +1,9 @@
 package compiler.tree.operations;
 
-import java.util.Stack;
-
 import compiler.tree.types.Type;
 import org.antlr.runtime.Token;
 
-public class Div extends Arithmetics {
+public class Div extends Arithmetic {
 
 	public Div(Token token) {
 		super(token);

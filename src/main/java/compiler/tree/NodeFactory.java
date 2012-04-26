@@ -6,9 +6,7 @@ import compiler.tree.operations.Add;
 import compiler.tree.operations.Div;
 import compiler.tree.operations.Mul;
 import compiler.tree.operations.Sub;
-import compiler.tree.values.FloatValue;
-import compiler.tree.values.Id;
-import compiler.tree.values.IntValue;
+import compiler.tree.values.*;
 import org.antlr.runtime.Token;
 
 public class NodeFactory {
@@ -50,6 +48,11 @@ public class NodeFactory {
                 case MyLexer.FLOAT_TYPE:
                     node= new LiteralFloat(token);
                     break;
+                case MyLexer.STRING:
+                    node = new StringValue(token);
+                case MyLexer.STRING_TYPE:
+                    node= new LiteralString(token);
+                    break;
                 case MyLexer.PRINT:
                 	node = new Print(token);
                 	break;
@@ -59,6 +62,7 @@ public class NodeFactory {
                 case MyLexer.DECLARATION:
                     node = new Declaration(token);
                     break;
+
 
                 default:
                     node = new Node(token);

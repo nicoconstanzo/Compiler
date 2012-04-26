@@ -1,11 +1,9 @@
 package compiler.tree.operations;
 
-import java.util.Stack;
-
 import compiler.tree.types.Type;
 import org.antlr.runtime.Token;
 
-public class Sub extends Arithmetics {
+public class Sub extends Arithmetic {
 
 	public Sub(Token token) {
 		super(token);

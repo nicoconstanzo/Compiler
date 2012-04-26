@@ -21,6 +21,12 @@ DIV:'/';
 /*  Types */
 INTEGER_TYPE: 'Integer';
 FLOAT_TYPE: 'Float';
+STRING_TYPE: 'String';
+
+/* Strings */
+STRING: QUOTE (~'"')* QUOTE;
+QUOTE: '"';
+
 
 /* Identifier */
 ID: LETTER (LETTER|DIGIT)*;

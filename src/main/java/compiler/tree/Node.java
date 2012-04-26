@@ -39,14 +39,7 @@ public class Node extends CommonTree {
 
         return builder.toString();
     }
-    
-    public void execute (Stack<Object> stack) {
-    	int count = getChildCount();
-    	for(int i = 0; i < count; i++) {
-    		getChild(i).execute(stack);
-    	}
-    }
-    
+
     public Type getTypeDef() {
 		return typeDef;
 	}
@@ -61,4 +54,18 @@ public class Node extends CommonTree {
 
         }
     }
+
+    public void execute (Stack<Object> stack) {
+        int count = getChildCount();
+        for(int i = 0; i < count; i++) {
+            getChild(i).execute(stack);
+        }
+    }
+
+//    public void generate(){
+//        for(int i=0; i<getChildCount(); i++){
+//            getChild(i).generate();
+//
+//        }
+//    }
 }
