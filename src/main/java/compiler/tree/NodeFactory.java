@@ -50,6 +50,7 @@ public class NodeFactory {
                     break;
                 case MyLexer.STRING:
                     node = new StringValue(token);
+                    break;
                 case MyLexer.STRING_TYPE:
                     node= new LiteralString(token);
                     break;

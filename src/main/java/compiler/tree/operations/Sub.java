@@ -10,6 +10,11 @@ public class Sub extends Arithmetic {
 		// TODO Auto-generated constructor stub
 	}
 
+    @Override
+    public String operation(String object1, String object2) {
+        return null;
+    }
+
 
     @Override
     public Number operation(Number object1, Number object2) {

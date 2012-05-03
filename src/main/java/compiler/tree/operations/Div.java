@@ -11,6 +11,11 @@ public class Div extends Arithmetic {
 	}
 
     @Override
+    public String operation(String object1, String object2) {
+        return null;
+    }
+
+    @Override
     public Number operation(Number object1, Number object2) {
         if(getTypeDef()==Type.FLOAT){
             return object2.floatValue() / object1.floatValue();

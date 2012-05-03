@@ -32,20 +32,26 @@ public abstract class Arithmetic extends Node {
 
     @Override
     public void execute(Stack<Object> stack){
+
         super.execute(stack); //evalua los hijos para ver si son integers o no.
         if (getTypeDef().equals(Type.INTEGER)) {
             Number i1 = (Number) stack.pop();
             Number i2 = (Number) stack.pop();
             stack.push(operation(i1,i2));
 
-        } else {
+        } else if(getTypeDef().equals(Type.FLOAT)) {
             Number f1 = (Number) stack.pop();
             Number f2 = (Number) stack.pop();
             stack.push(operation(f1,f2));
+
+        } else {
+            String f1 = (String) stack.pop();
+            String f2 = (String) stack.pop();
+            stack.push(operation(f2,f1));
         }
 
-
     }
+    public abstract String operation(String object1, String object2);
 
     public abstract Number operation(Number object1, Number object2);
 }
