@@ -2,6 +2,9 @@ package compiler.tree;
 
 import compiler.MyLexer;
 
+import compiler.tree.literals.LiteralFloat;
+import compiler.tree.literals.LiteralInteger;
+import compiler.tree.literals.LiteralString;
 import compiler.tree.operations.Add;
 import compiler.tree.operations.Div;
 import compiler.tree.operations.Mul;

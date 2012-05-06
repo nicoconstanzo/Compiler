@@ -6,6 +6,7 @@ import compiler.tree.symbol.SymbolTable;
 import compiler.tree.types.Type;
 import org.antlr.runtime.Token;
 import org.antlr.runtime.tree.CommonTree;
+import org.objectweb.asm.MethodVisitor;
 
 public class Node extends CommonTree {
 	
@@ -62,10 +63,11 @@ public class Node extends CommonTree {
         }
     }
 
-//    public void generate(){
-//        for(int i=0; i<getChildCount(); i++){
-//            getChild(i).generate();
-//
-//        }
-//    }
+    public void generateBytecode(MethodVisitor mv){
+        for(int i=0; i<getChildCount(); i++){
+            getChild(i).generateBytecode(mv);
+        }
+    }
+
+
 }

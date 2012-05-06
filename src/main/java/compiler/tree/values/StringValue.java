@@ -20,6 +20,13 @@ public class StringValue extends Node {
     }
 
     @Override
+    public String getText() {
+        String text =  (super.getText()).substring(1,(super.getText()).length());
+        return text;
+
+    }
+
+    @Override
     public void analyze(SymbolTable symbolTable) {
         setTypeDef(Type.STRING);
     }
@@ -29,5 +36,6 @@ public class StringValue extends Node {
     public void execute (Stack<Object> stack) {
         stack.push(getText());
     }
+
 
 }

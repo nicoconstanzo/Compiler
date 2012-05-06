@@ -45,8 +45,8 @@ public abstract class Arithmetic extends Node {
             stack.push(operation(f1,f2));
 
         } else {
-            String f1 = (String) stack.pop();
-            String f2 = (String) stack.pop();
+            String f1 = stack.pop().toString();
+            String f2 = stack.pop().toString();
             stack.push(operation(f2,f1));
         }
 
