@@ -4,6 +4,7 @@ import compiler.tree.symbol.Symbol;
 import compiler.tree.symbol.SymbolTable;
 import compiler.tree.types.Type;
 import org.antlr.runtime.Token;
+import org.objectweb.asm.MethodVisitor;
 
 import java.util.Stack;
 
@@ -29,14 +30,13 @@ public class Declaration extends Node {
 
     public void analyze(SymbolTable symbolTable){
         Type type = getChild(1).getTypeDef();
-        Symbol symbol = new Symbol(null,type);
         String name = getChild(0).getText();
-        symbolTable.declare(name,symbol);
-        
-        
-        
+        symbolTable.declare(name,type);
+        getChild(0).analyze(symbolTable);
 
     }
 
-
+    @Override
+    public void generateBytecode(MethodVisitor mv) {
+    }
 }

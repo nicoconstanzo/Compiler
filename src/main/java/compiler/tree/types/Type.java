@@ -25,5 +25,19 @@ public abstract class Type {
         
     }
 
+    public boolean isInteger() {
+        return equals(INTEGER);
+    }
+
+
+    public boolean isString() {
+        return equals(STRING);
+    }
+
+    public boolean isFloat() {
+        return equals(FLOAT);
+    }
+
+    public abstract String getJavaDescriptor();
 }
                     

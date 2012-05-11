@@ -1,6 +1,7 @@
 logs
 project/project
 project/target
+.class
 target
 tmp
 .history
@@ -9,5 +10,6 @@ compiler.iml
 compiler.ipr
 compiler.iws
 compiler.sh
+src/test/generated/*
 
 

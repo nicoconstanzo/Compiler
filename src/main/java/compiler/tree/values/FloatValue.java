@@ -4,6 +4,8 @@ import compiler.tree.Node;
 import compiler.tree.symbol.SymbolTable;
 import compiler.tree.types.Type;
 import org.antlr.runtime.Token;
+import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.Opcodes;
 
 import java.util.Stack;
 
@@ -27,5 +29,12 @@ public class FloatValue extends Node {
     @Override
     public void analyze(SymbolTable symbolTable) {
         setTypeDef(Type.FLOAT);
+    }
+
+    @Override
+    public void generateBytecode(MethodVisitor mv) {
+        super.generateBytecode(mv);
+        mv.visitLdcInsn(Float.parseFloat(getText()));
+   
     }
 }

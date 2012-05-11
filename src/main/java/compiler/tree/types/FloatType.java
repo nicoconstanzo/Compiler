@@ -7,4 +7,9 @@ public class FloatType extends Type {
 		return "Float";
 	}
 
+    @Override
+    public String getJavaDescriptor() {
+        return "(F)";
+    }
+
 }

@@ -1,3 +1,7 @@
-a : String
-a := "hola"
-print "result: " + a
+a : Integer
+a := 6
+
+b : Float
+b:= 2.0
+
+print  a / b

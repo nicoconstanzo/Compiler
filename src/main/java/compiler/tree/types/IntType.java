@@ -7,4 +7,10 @@ public class IntType extends Type {
 		return "Integer";
 	}
 
+    @Override
+    public String getJavaDescriptor() {
+        return "(I)";
+
+    }
+
 }

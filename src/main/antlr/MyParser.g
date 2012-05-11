@@ -22,10 +22,9 @@ assignStatement: ID ASSIGN^ expression;
 typeSpec: INTEGER_TYPE | FLOAT_TYPE | STRING_TYPE;
 
 /* Expressions */
-expression: addExpr | concat;
-concat: (ID | STRING) (ADD^ (ID | STRING))*;
+expression: addExpr;
 addExpr: multExpr((ADD|SUB)^ multExpr)*;
 multExpr: factor((MUL|DIV)^ factor)*;
-factor: INTEGER | FLOAT | ID |  L_PARENTHESIS! expression R_PARENTHESIS!;
+factor: STRING | INTEGER | FLOAT | ID |  L_PARENTHESIS! expression R_PARENTHESIS!;
 
 

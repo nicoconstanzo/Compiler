@@ -30,7 +30,11 @@ public class IntValue extends Node {
     @Override
     public void generateBytecode(MethodVisitor mv) {
         super.generateBytecode(mv);
-        mv.visitIntInsn(Opcodes.BIPUSH, Integer.parseInt(getText()));
+        if(-127<=Integer.parseInt(getText()) && Integer.parseInt(getText())<=128){
+            mv.visitIntInsn(Opcodes.BIPUSH, Integer.parseInt(getText()));
+        }else{
+            mv.visitIntInsn(Opcodes.SIPUSH, Integer.parseInt(getText()));
+        };
     }
 
 }

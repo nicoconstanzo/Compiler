@@ -4,6 +4,7 @@ import compiler.tree.Node;
 import compiler.tree.symbol.SymbolTable;
 import compiler.tree.types.Type;
 import org.antlr.runtime.Token;
+import org.objectweb.asm.MethodVisitor;
 
 import java.util.Stack;
 
@@ -21,8 +22,8 @@ public class StringValue extends Node {
 
     @Override
     public String getText() {
-        String text =  (super.getText()).substring(1,(super.getText()).length());
-        return text;
+        String text = super.getText();
+        return text.substring(1, text.length() - 1);
 
     }
 
@@ -37,5 +38,8 @@ public class StringValue extends Node {
         stack.push(getText());
     }
 
-
+    @Override
+    public void generateBytecode(MethodVisitor mv) {
+        mv.visitLdcInsn(getText());
+    }
 }

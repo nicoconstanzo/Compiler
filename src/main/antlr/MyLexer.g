@@ -24,7 +24,7 @@ FLOAT_TYPE: 'Float';
 STRING_TYPE: 'String';
 
 /* Strings */
-STRING: QUOTE (~'"')* QUOTE;
+STRING: QUOTE! (~'"')* QUOTE!;
 QUOTE: '"';
 
 

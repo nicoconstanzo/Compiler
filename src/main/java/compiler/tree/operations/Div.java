@@ -2,6 +2,9 @@ package compiler.tree.operations;
 
 import compiler.tree.types.Type;
 import org.antlr.runtime.Token;
+import org.objectweb.asm.MethodVisitor;
+
+import static org.objectweb.asm.Opcodes.*;
 
 public class Div extends Arithmetic {
 
@@ -23,5 +26,26 @@ public class Div extends Arithmetic {
             return object2.intValue() / object1.intValue();
         }
 
+    }
+
+    @Override
+    public void generateBytecode(MethodVisitor mv) {
+        Type type1 = getChild(0).getTypeDef();
+        Type type2 = getChild(1).getTypeDef();
+        if (getTypeDef().isInteger()) {
+            super.generateBytecode(mv);
+            mv.visitInsn(IDIV);
+        } else if (getTypeDef().isFloat()) {
+            getChild(0).generateBytecode(mv);
+            if (type1.isInteger()){
+                mv.visitInsn(I2F);
+            }
+
+            getChild(1).generateBytecode(mv);
+            if (type2.isInteger()){
+                mv.visitInsn(I2F);
+            }
+            mv.visitInsn(FDIV);
+        }
     }
 }

@@ -3,11 +3,11 @@ package compiler;
 import compiler.tree.*;
 import compiler.tree.symbol.SymbolTable;
 import org.antlr.runtime.RecognitionException;
+import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.MethodVisitor;
+import static org.objectweb.asm.Opcodes.*;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.StringReader;
+import java.io.*;
 import java.util.Stack;
 
 /**
@@ -41,6 +41,20 @@ public class Compiler {
                         return super.push(o);    //To change body of overridden methods use File | Settings | File Templates.
                     }
                 });
+                String fileName = new File(arg).getName();
+
+                ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_MAXS);
+                cw.visit(V1_6, ACC_PUBLIC + ACC_SUPER, fileName, null, "java/lang/Object", null);
+                MethodVisitor mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC,"main" , "([Ljava/lang/String;)V", null, null);
+
+                ast.generateBytecode(mv);
+                mv.visitMaxs(0,0);
+                byte[] bytecode = cw.toByteArray();
+                File outputFile = new File("src/test/generated", fileName + ".class");
+                FileOutputStream fstream = new FileOutputStream(outputFile);
+                fstream.write(bytecode);
+                fstream.close();
+
             }
             finally {
                 file.close();

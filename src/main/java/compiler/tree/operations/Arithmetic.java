@@ -51,6 +51,8 @@ public abstract class Arithmetic extends Node {
         }
 
     }
+
+
     public abstract String operation(String object1, String object2);
 
     public abstract Number operation(Number object1, Number object2);
