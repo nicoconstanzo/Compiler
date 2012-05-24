@@ -11,6 +11,11 @@ WHITESPACE: (' '|'\t'|'\n'|'\r') + {skip();} ;
 PRINT:'print';
 ASSIGN:':=';
 DECLARATION:':';
+GREATER_THAN:'>';
+LESS_THAN:'<';
+EQUALS:'==';
+AND:'&';
+OR:'|';
 
 /* Operators */
 ADD:'+';
@@ -22,10 +27,14 @@ DIV:'/';
 INTEGER_TYPE: 'Integer';
 FLOAT_TYPE: 'Float';
 STRING_TYPE: 'String';
+BOOLEAN_TYPE: 'Boolean';
 
 /* Strings */
 STRING: QUOTE! (~'"')* QUOTE!;
 QUOTE: '"';
+
+/* Boolean */
+BOOLEAN: 'true' | 'false';
 
 
 /* Identifier */

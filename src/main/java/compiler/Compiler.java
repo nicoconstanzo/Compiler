@@ -32,16 +32,17 @@ public class Compiler {
                 Node ast = compiler.parse(file, true);
                 System.out.println("TREE:\n" + ast + "\n");
                 ast.analyze(new SymbolTable());
-                ast.execute(new Stack<Object>() {
-                    @Override
-                    public Object push(Object o) {
-                        if (o instanceof Node) {
-                            throw new RuntimeException();
-                        }
-                        return super.push(o);    //To change body of overridden methods use File | Settings | File Templates.
-                    }
-                });
-                String fileName = new File(arg).getName();
+//                ast.execute(new Stack<Object>() {
+//                    @Override
+//                    public Object push(Object o) {
+//                        if (o instanceof Node) {
+//                            throw new RuntimeException();
+//                        }
+//                        return super.push(o);    //To change body of overridden methods use File | Settings | File Templates.
+//                    }
+//                });
+                File file1 = new File(arg);
+                String fileName = file1.getName();
 
                 ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_MAXS);
                 cw.visit(V1_6, ACC_PUBLIC + ACC_SUPER, fileName, null, "java/lang/Object", null);
@@ -50,7 +51,7 @@ public class Compiler {
                 ast.generateBytecode(mv);
                 mv.visitMaxs(0,0);
                 byte[] bytecode = cw.toByteArray();
-                File outputFile = new File("src/test/generated", fileName + ".class");
+                File outputFile = new File(file1.getParentFile(), fileName + ".class");
                 FileOutputStream fstream = new FileOutputStream(outputFile);
                 fstream.write(bytecode);
                 fstream.close();

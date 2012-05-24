@@ -38,5 +38,6 @@ public class Declaration extends Node {
 
     @Override
     public void generateBytecode(MethodVisitor mv) {
+//        Por ahora esto sirve.
     }
 }

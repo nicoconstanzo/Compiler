@@ -40,13 +40,13 @@ public class Assign extends Node{
     public void generateBytecode(MethodVisitor mv) {
         getChild(1).generateBytecode(mv);
 
-        if(getTypeDef().isInteger()){
+        if(getTypeDef().isInteger() || getTypeDef().isBoolean()){
             mv.visitVarInsn(ISTORE,symbol.getIndex());
         }
         else if (getTypeDef().isFloat()) {
             mv.visitVarInsn(FSTORE, symbol.getIndex());
         }
-        else{
+        else {
             mv.visitVarInsn(ASTORE,symbol.getIndex());
         }
     }

@@ -6,6 +6,7 @@ public abstract class Type {
 	public static final Type INTEGER = new IntType();
 	public static final Type FLOAT = new FloatType();
     public static final Type STRING = new StringType();
+    public static final Type BOOLEAN = new BooleanType();
 
 
     public static Type promotion(Type t1, Type t2){
@@ -37,6 +38,10 @@ public abstract class Type {
     public boolean isFloat() {
         return equals(FLOAT);
     }
+
+    public boolean isBoolean() {
+           return equals(BOOLEAN);
+       }
 
     public abstract String getJavaDescriptor();
 }

@@ -33,7 +33,6 @@ public class FloatValue extends Node {
 
     @Override
     public void generateBytecode(MethodVisitor mv) {
-        super.generateBytecode(mv);
         mv.visitLdcInsn(Float.parseFloat(getText()));
    
     }

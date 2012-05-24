@@ -1,7 +1,5 @@
-a : Integer
-a := 6
+a : Boolean
+a := true
 
-b : Float
-b:= 2.0
-
-print  a / b
+b : Boolean
+b:= false

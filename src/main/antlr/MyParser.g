@@ -19,12 +19,14 @@ printStatement: PRINT^ expression;
 declarationStatement: ID DECLARATION^ typeSpec;
 assignStatement: ID ASSIGN^ expression;
 
-typeSpec: INTEGER_TYPE | FLOAT_TYPE | STRING_TYPE;
+typeSpec: INTEGER_TYPE | FLOAT_TYPE | STRING_TYPE | BOOLEAN_TYPE;
 
 /* Expressions */
-expression: addExpr;
+expression: boolExpr;
+boolExpr: compExpr ((AND|OR)^ compExpr)*;
+compExpr: addExpr ((GREATER_THAN|LESS_THAN|EQUALS)^ addExpr)*;
 addExpr: multExpr((ADD|SUB)^ multExpr)*;
 multExpr: factor((MUL|DIV)^ factor)*;
-factor: STRING | INTEGER | FLOAT | ID |  L_PARENTHESIS! expression R_PARENTHESIS!;
 
+factor: BOOLEAN | STRING | INTEGER | FLOAT | ID |  L_PARENTHESIS! expression R_PARENTHESIS!;
 

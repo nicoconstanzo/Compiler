@@ -12,7 +12,8 @@ public class CompleteTest {
     public static void main (String args[]){
         //addTest();
         //subTest();
-        mulTest();
+//        mulTest();
+        boolTest();
 
     }
 
@@ -35,5 +36,14 @@ public class CompleteTest {
         int b = 3;
         int c = a*b;
         System.out.println(c);
+    }
+
+    public static void boolTest() {
+        boolean a;
+        a = true;
+        boolean b;
+        b = false;
+        boolean c;
+        c = true;
     }
 }

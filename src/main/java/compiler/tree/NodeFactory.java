@@ -2,6 +2,7 @@ package compiler.tree;
 
 import compiler.MyLexer;
 
+import compiler.tree.literals.LiteralBoolean;
 import compiler.tree.literals.LiteralFloat;
 import compiler.tree.literals.LiteralInteger;
 import compiler.tree.literals.LiteralString;
@@ -18,21 +19,20 @@ public class NodeFactory {
 
         if (token == null) {
             node = new Node(null);
-        }
-        else {
+        } else {
             switch (token.getType()) {
                 case MyLexer.ADD:
                     node = new Add(token);
                     break;
                 case MyLexer.SUB:
-                	node = new Sub(token);
-                	break;
+                    node = new Sub(token);
+                    break;
                 case MyLexer.MUL:
-                	node = new Mul(token);
-                	break;
+                    node = new Mul(token);
+                    break;
                 case MyLexer.DIV:
-                	node = new Div(token);
-                	break;
+                    node = new Div(token);
+                    break;
                 case MyLexer.EOF:
                     node = new Program(token);
                     break;
@@ -40,26 +40,32 @@ public class NodeFactory {
                     node = new Id(token);
                     break;
                 case MyLexer.INTEGER:
-                	node = new IntValue(token);
-                	break;
+                    node = new IntValue(token);
+                    break;
                 case MyLexer.INTEGER_TYPE:
-                    node= new LiteralInteger(token);
+                    node = new LiteralInteger(token);
                     break;
                 case MyLexer.FLOAT:
-                    node= new FloatValue(token);
+                    node = new FloatValue(token);
                     break;
                 case MyLexer.FLOAT_TYPE:
-                    node= new LiteralFloat(token);
+                    node = new LiteralFloat(token);
                     break;
                 case MyLexer.STRING:
                     node = new StringValue(token);
                     break;
                 case MyLexer.STRING_TYPE:
-                    node= new LiteralString(token);
+                    node = new LiteralString(token);
+                    break;
+                case MyLexer.BOOLEAN:
+                    node = new BooleanValue(token);
+                    break;
+                case MyLexer.BOOLEAN_TYPE:
+                    node = new LiteralBoolean(token);
                     break;
                 case MyLexer.PRINT:
-                	node = new Print(token);
-                	break;
+                    node = new Print(token);
+                    break;
                 case MyLexer.ASSIGN:
                     node = new Assign(token);
                     break;
