@@ -1,5 +1,7 @@
-a : Boolean
-a := true
+a : Integer
+a := 3
 
-b : Boolean
-b:= false
+b : Integer
+b:= 2
+
+print 3>2

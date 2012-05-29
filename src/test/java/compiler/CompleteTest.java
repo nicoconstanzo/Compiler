@@ -13,8 +13,8 @@ public class CompleteTest {
         //addTest();
         //subTest();
 //        mulTest();
-        boolTest();
-
+//        boolTest();
+        compareTest();
     }
 
     public static void addTest(){
@@ -45,5 +45,15 @@ public class CompleteTest {
         b = false;
         boolean c;
         c = true;
+    }
+
+    public static void compareTest() {
+        int a = 2;
+        int b = 3;
+        if (a<b) {
+            System.out.println(true);
+        } else {
+            System.out.println(false);
+        }
     }
 }

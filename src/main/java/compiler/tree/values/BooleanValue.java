@@ -17,6 +17,7 @@ import java.util.Stack;
  * Time: 6:01 PM
  * To change this template use File | Settings | File Templates.
  */
+
 public class BooleanValue extends Node {
 
     public BooleanValue(Token token) {
@@ -25,12 +26,13 @@ public class BooleanValue extends Node {
 
     @Override
     public void analyze(SymbolTable symbolTable) {
-        setTypeDef(Type.BOOLEAN);    //To change body of overridden methods use File | Settings | File Templates.
+        setTypeDef(Type.BOOLEAN);
     }
 
     @Override
     public void execute(Stack<Object> stack) {
-//        TODO
+        stack.push(getText());
+//        it can be true or false
     }
 
     @Override
@@ -45,4 +47,7 @@ public class BooleanValue extends Node {
         }
 
     }
+
+    public static final String TRUE_VALUE = "true";
+    public static final String FALSE_VALUE = "false";
 }

@@ -6,10 +6,7 @@ import compiler.tree.literals.LiteralBoolean;
 import compiler.tree.literals.LiteralFloat;
 import compiler.tree.literals.LiteralInteger;
 import compiler.tree.literals.LiteralString;
-import compiler.tree.operations.Add;
-import compiler.tree.operations.Div;
-import compiler.tree.operations.Mul;
-import compiler.tree.operations.Sub;
+import compiler.tree.operations.*;
 import compiler.tree.values.*;
 import org.antlr.runtime.Token;
 
@@ -32,6 +29,12 @@ public class NodeFactory {
                     break;
                 case MyLexer.DIV:
                     node = new Div(token);
+                    break;
+                case MyLexer.GREATER_THAN:
+                    node = new GreaterThan(token);
+                    break;
+                case MyLexer.LESS_THAN:
+                    node = new LessThan(token);
                     break;
                 case MyLexer.EOF:
                     node = new Program(token);
