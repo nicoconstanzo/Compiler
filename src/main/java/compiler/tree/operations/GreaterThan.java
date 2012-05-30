@@ -5,23 +5,19 @@ import compiler.tree.symbol.SymbolTable;
 import compiler.tree.types.Type;
 import compiler.tree.values.BooleanValue;
 import org.antlr.runtime.Token;
+import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
+import static org.objectweb.asm.Opcodes.*;
 
 import java.util.Stack;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Nico
- * Date: 5/29/12
- * Time: 9:31 AM
- * To change this template use File | Settings | File Templates.
- */
 public class GreaterThan extends Node {
 
     public GreaterThan (Token token) {
         super(token);
     }
 
+    @Override
     public void execute(Stack<Object> stack) {
         super.execute(stack);
         Number i1 = (Number) stack.pop();
@@ -34,12 +30,22 @@ public class GreaterThan extends Node {
         }
     }
 
-    public void analyze (SymbolTable st) {
-        super.analyze(st);
+
+
+    @Override
+    public void analyze(SymbolTable symbolTable) {
+        super.analyze(symbolTable);
         setTypeDef(Type.BOOLEAN);
     }
 
-    public void generateBytecode (MethodVisitor mv) {
-//  TODO generateBytecode for greaterThan
+
+
+    @Override
+    public void generateBytecode(MethodVisitor mv) {
+        super.generateBytecode(mv);
+        Label label = new Label();
+        mv.visitJumpInsn(IF_ICMPGE,label);
+
     }
+
 }

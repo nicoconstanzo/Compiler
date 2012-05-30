@@ -14,7 +14,12 @@ options {
 program: statement* EOF^;
 	
 /* Statements*/
-statement: printStatement|declarationStatement|assignStatement;
+statement: printStatement|declarationStatement|assignStatement|ifStatement|whileStatement;
+ifStatement: IF^ expression thenBlock elseBlock? END_IF! IF!;
+thenBlock: THEN^ statement;
+elseBlock: END_IF^ statement;
+whileStatement: WHILE^ expression loopBlock END_LOOP! WHILE!;
+loopBlock: LOOP^ statement;
 printStatement: PRINT^ expression;
 declarationStatement: ID DECLARATION^ typeSpec;
 assignStatement: ID ASSIGN^ expression;

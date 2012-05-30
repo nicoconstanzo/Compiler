@@ -66,6 +66,9 @@ public class NodeFactory {
                 case MyLexer.BOOLEAN_TYPE:
                     node = new LiteralBoolean(token);
                     break;
+                case MyLexer.EQUALS:
+                    node = new Equals(token);
+                    break;
                 case MyLexer.PRINT:
                     node = new Print(token);
                     break;

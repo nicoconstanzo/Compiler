@@ -1,5 +1,7 @@
 package compiler;
 
+import java.sql.SQLOutput;
+
 /**
  * Created by IntelliJ IDEA.
  * User: NoePodesta
@@ -14,8 +16,11 @@ public class CompleteTest {
         //subTest();
 //        mulTest();
 //        boolTest();
-        compareTest();
+//        greaterThanTest();
+//        equalsTest();
+//        lessThanTest();
     }
+
 
     public static void addTest(){
         String a = "Hola ";
@@ -47,10 +52,30 @@ public class CompleteTest {
         c = true;
     }
 
-    public static void compareTest() {
+    public static void greaterThanTest() {
         int a = 2;
         int b = 3;
         if (a<b) {
+            System.out.println(true);
+        } else {
+            System.out.println(false);
+        }
+    }
+
+    public static void lessThanTest() {
+        int a = 2;
+        int b = 3;
+        if (a>b) {
+            System.out.println(true);
+        } else {
+            System.out.println(false);
+        }
+    }
+
+    public static void equalTest() {
+        int a = 2;
+        int b = 3;
+        if (a==b) {
             System.out.println(true);
         } else {
             System.out.println(false);

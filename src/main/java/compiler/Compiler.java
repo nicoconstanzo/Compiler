@@ -51,7 +51,7 @@ public class Compiler {
                 ast.generateBytecode(mv);
                 mv.visitMaxs(0,0);
                 byte[] bytecode = cw.toByteArray();
-                File outputFile = new File(file1.getParentFile(), fileName + ".class");
+                File outputFile = new File("src/test/generated", fileName + ".class");
                 FileOutputStream fstream = new FileOutputStream(outputFile);
                 fstream.write(bytecode);
                 fstream.close();

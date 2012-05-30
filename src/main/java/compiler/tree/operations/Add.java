@@ -51,7 +51,7 @@ public class Add extends Arithmetic {
             }
             mv.visitInsn(FADD);
         } else if (getTypeDef().isString()) {
-            mv.visitTypeInsn(NEW, "java/lang/StringBuilder");
+            mv.visitTypeInsn(NEW, JAVA_LANG_STRING_BUILDER);
             mv.visitInsn(DUP);
             mv.visitMethodInsn(INVOKESPECIAL, JAVA_LANG_STRING_BUILDER, "<init>", "()V");
             getChild(0).generateBytecode(mv);

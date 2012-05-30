@@ -16,6 +16,12 @@ LESS_THAN:'<';
 EQUALS:'==';
 AND:'&';
 OR:'|';
+IF:'if';
+THEN: 'then';
+END_IF: 'end if';
+WHILE:'while';
+LOOP: 'loop';
+END_LOOP:'end loop';
 
 /* Operators */
 ADD:'+';
