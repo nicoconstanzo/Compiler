@@ -16,11 +16,11 @@ public class CompleteTest {
 //        subTest();
 //        mulTest();
 //        boolTest();
-//        greaterThanTest();
+        greaterThanTest();
 //        equalsTest();
 //        lessThanTest();
 //        whileTest();
-        andTest();
+//        andTest();
     }
 
 
@@ -55,13 +55,14 @@ public class CompleteTest {
     }
 
     public static void greaterThanTest() {
-        int a = 2;
-        int b = 3;
-        if (a < b) {
-            System.out.println(true);
-        } else {
-            System.out.println(false);
-        }
+        float a = (float) 2.3;
+        float b = (float) 3.0;
+        System.out.println(a<b);
+//        if (a < b) {
+//            System.out.println(true);
+//        } else {
+//            System.out.println(false);
+//        }
     }
 
     public static void lessThanTest() {

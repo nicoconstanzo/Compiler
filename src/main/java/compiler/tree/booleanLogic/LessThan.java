@@ -48,9 +48,15 @@ public class LessThan extends Node {
 
     @Override
     public void generateBytecode(MethodVisitor mv) {
-        super.generateBytecode(mv); 
-        Label label = new Label();
-        mv.visitJumpInsn(IF_ICMPLE,label);
+        Label booleanLabel = new Label();
+        mv.visitJumpInsn(IF_ICMPLE,booleanLabel);
+        getChild(0).generateBytecode(mv);
+        mv.visitLabel(booleanLabel);
+        Label endLabel = new Label();
+        mv.visitJumpInsn(GOTO, endLabel);
+        getChild(1).generateBytecode(mv);
+        mv.visitLabel(endLabel);
+
     }
 
 

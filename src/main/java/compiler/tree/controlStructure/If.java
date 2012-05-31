@@ -27,10 +27,10 @@ public class If extends Node {
     //ASk HOW TO GET THE LABEL WE HAVE SET TO THE EQUALS, EQUALS, GREATER or LESSER
     @Override
     public void generateBytecode(MethodVisitor mv) {
-        super.generateBytecode(mv);
-
-        Label jumpInstruction = getChild(0).getLabel();
-        mv.visitLabel(jumpInstruction);
+//        super.generateBytecode(mv);
+//
+//        Label jumpInstruction = getChild(0).getLabel();
+//        mv.visitLabel(jumpInstruction);
     }
 
 

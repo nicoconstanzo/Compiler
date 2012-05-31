@@ -42,9 +42,20 @@ public class GreaterThan extends Node {
 
     @Override
     public void generateBytecode(MethodVisitor mv) {
-        super.generateBytecode(mv);
-        Label label = new Label();
-        mv.visitJumpInsn(IF_ICMPGE,label);
+        Label booleanLabel = new Label();
+        Label endLabel = new Label();
+        Node child0 = getChild(0);
+        Node child1 = getChild(1);
+        if(child0.getTypeDef().isInteger() && child1.getTypeDef().isInteger()){
+            mv.visitJumpInsn(IF_ICMPGE,booleanLabel);
+            child0.generateBytecode(mv);
+            mv.visitLabel(booleanLabel);
+            mv.visitJumpInsn(GOTO, endLabel);
+            child1.generateBytecode(mv);
+            mv.visitLabel(endLabel);
+        }else if(child0.getTypeDef().isFloat() && child1.getTypeDef().isFloat()){
+
+        }
 
     }
 
