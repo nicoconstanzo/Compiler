@@ -4,4 +4,9 @@ a := 2
 b : Integer
 b:= 1
 
-print a>b
+if (a==b) then
+    print("true")
+else
+    print("false")
+end if
+

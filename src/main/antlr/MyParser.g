@@ -15,10 +15,10 @@ program: statement* EOF^;
 	
 /* Statements*/
 statement: printStatement|declarationStatement|assignStatement|ifStatement|whileStatement;
-ifStatement: IF^ expression thenBlock elseBlock? END_IF! IF!;
+ifStatement: IF^ expression thenBlock elseBlock? END_IF!;
 thenBlock: THEN^ statement;
-elseBlock: END_IF^ statement;
-whileStatement: WHILE^ expression loopBlock END_LOOP! WHILE!;
+elseBlock: ELSE^ statement;
+whileStatement: WHILE^ expression loopBlock END_LOOP!;
 loopBlock: LOOP^ statement;
 printStatement: PRINT^ expression;
 declarationStatement: ID DECLARATION^ typeSpec;

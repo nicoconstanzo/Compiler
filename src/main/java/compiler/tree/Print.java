@@ -21,12 +21,10 @@ public class Print extends Node {
 
     @Override
     public void generateBytecode(MethodVisitor mv) {
-       String type = null;
        mv.visitFieldInsn(GETSTATIC,"java/lang/System","out", "Ljava/io/PrintStream;");
        Node child = getChild(0);
        child.generateBytecode(mv);
        mv.visitMethodInsn(INVOKEVIRTUAL, "java/io/PrintStream", "println", child.getTypeDef().getJavaDescriptor()+"V");
        mv.visitInsn(RETURN);
-
     }
 }

@@ -36,9 +36,6 @@ public class NodeFactory {
                 case MyLexer.LESS_THAN:
                     node = new LessThan(token);
                     break;
-                case MyLexer.EOF:
-                    node = new Program(token);
-                    break;
                 case MyLexer.ID:
                     node = new Id(token);
                     break;
@@ -77,6 +74,22 @@ public class NodeFactory {
                     break;
                 case MyLexer.DECLARATION:
                     node = new Declaration(token);
+                    break;
+                case MyLexer.IF:
+                    node = new If(token);
+                    break;
+                case MyLexer.ELSE:
+                    node = new Else(token);
+                    break;
+                case MyLexer.THEN:
+                    node = new Then(token);
+                    break;
+                case MyLexer.WHILE:
+                    node = new While(token);
+                    break;
+
+                case MyLexer.EOF:
+                    node = new Program(token);
                     break;
 
 

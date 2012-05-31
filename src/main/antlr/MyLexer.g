@@ -17,6 +17,7 @@ EQUALS:'==';
 AND:'&';
 OR:'|';
 IF:'if';
+ELSE: 'else';
 THEN: 'then';
 END_IF: 'end if';
 WHILE:'while';
