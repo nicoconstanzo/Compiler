@@ -46,17 +46,49 @@ public class LessThan extends Node {
         setTypeDef(Type.BOOLEAN);
     }
 
+
     @Override
     public void generateBytecode(MethodVisitor mv) {
         Label booleanLabel = new Label();
-        mv.visitJumpInsn(IF_ICMPLE,booleanLabel);
-        getChild(0).generateBytecode(mv);
-        mv.visitLabel(booleanLabel);
         Label endLabel = new Label();
-        mv.visitJumpInsn(GOTO, endLabel);
-        getChild(1).generateBytecode(mv);
-        mv.visitLabel(endLabel);
+        Node child0 = getChild(0);
+        Node child1 = getChild(1);
+        if(child0.getTypeDef().isInteger() && child1.getTypeDef().isInteger()){
+            mv.visitJumpInsn(IF_ICMPGE,booleanLabel);
+            child0.generateBytecode(mv);
+            child1.generateBytecode(mv);
+            mv.visitInsn(ICONST_1);
+            mv.visitJumpInsn(GOTO, endLabel);
+            mv.visitLabel(booleanLabel);
+            mv.visitInsn(ICONST_0);
+            mv.visitLabel(endLabel);
+        }else if(child0.getTypeDef().isFloat() && child1.getTypeDef().isFloat()){
+            generateByteCodeForFloat(mv,child0,child1,booleanLabel,endLabel);
 
+        }else{
+            child0.generateBytecode(mv);
+            if (child0.getTypeDef().isInteger())  {
+                mv.visitInsn(I2F);
+            }
+            child1.generateBytecode(mv);
+            if(child1.getTypeDef().isInteger()){
+                mv.visitInsn(I2F);
+            }
+            generateByteCodeForFloat(mv,child0,child1,booleanLabel,endLabel);
+        }
+
+    }
+
+    private static void generateByteCodeForFloat(MethodVisitor mv, Node child0, Node child1, Label booleanLabel, Label endLabel){
+        mv.visitInsn(FCMPG);
+        mv.visitJumpInsn(IFGE,booleanLabel);
+        child0.generateBytecode(mv);
+        mv.visitInsn(ICONST_1);
+        mv.visitJumpInsn(GOTO, endLabel);
+        mv.visitLabel(booleanLabel);
+        child1.generateBytecode(mv);
+        mv.visitInsn(ICONST_0);
+        mv.visitLabel(endLabel);
     }
 
 

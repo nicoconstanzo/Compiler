@@ -16,10 +16,10 @@ program: statement* EOF^;
 /* Statements*/
 statement: printStatement|declarationStatement|assignStatement|ifStatement|whileStatement;
 ifStatement: IF^ expression thenBlock elseBlock? END_IF!;
-thenBlock: THEN^ statement;
-elseBlock: ELSE^ statement;
+thenBlock: THEN^ statement*;
+elseBlock: ELSE^ statement*;
 whileStatement: WHILE^ expression loopBlock END_LOOP!;
-loopBlock: LOOP^ statement;
+loopBlock: LOOP^ statement*;
 printStatement: PRINT^ expression;
 declarationStatement: ID DECLARATION^ typeSpec;
 assignStatement: ID ASSIGN^ expression;

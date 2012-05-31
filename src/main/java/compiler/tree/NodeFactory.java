@@ -5,10 +5,7 @@ import compiler.MyLexer;
 import compiler.tree.booleanLogic.Equals;
 import compiler.tree.booleanLogic.GreaterThan;
 import compiler.tree.booleanLogic.LessThan;
-import compiler.tree.controlStructure.Else;
-import compiler.tree.controlStructure.If;
-import compiler.tree.controlStructure.Then;
-import compiler.tree.controlStructure.While;
+import compiler.tree.controlStructure.*;
 import compiler.tree.literals.LiteralBoolean;
 import compiler.tree.literals.LiteralFloat;
 import compiler.tree.literals.LiteralInteger;
@@ -85,11 +82,14 @@ public class NodeFactory {
                 case MyLexer.IF:
                     node = new If(token);
                     break;
-                case MyLexer.ELSE:
-                    node = new Else(token);
-                    break;
                 case MyLexer.THEN:
-                    node = new Then(token);
+                    node = new Block(token);
+                    break;
+                case MyLexer.ELSE:
+                    node = new Block(token);
+                    break;
+                case MyLexer.LOOP:
+                    node = new Block(token);
                     break;
                 case MyLexer.WHILE:
                     node = new While(token);

@@ -4,9 +4,8 @@ a := 2
 b : Integer
 b:= 1
 
-if (a==b) then
+while (b>1) loop
     print("true")
-else
-    print("false")
-end if
+    a := a + 1
+end loop
 

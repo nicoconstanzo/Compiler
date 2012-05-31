@@ -27,10 +27,18 @@ public class While extends Node {
 
     @Override
     public void generateBytecode(MethodVisitor mv) {
-//        Label loopInstruction = new Label();
-//        super.generateBytecode(mv);
-//        Label jumpInstruction = getChild(0).getLabel();
-//        mv.visitJumpInsn(GOTO, loopInstruction);
-//        mv.visitLabel(jumpInstruction);
+        Label startLabel = new Label();
+        Label endLabel = new Label();
+
+        mv.visitLabel(startLabel);
+        getChild(0).generateBytecode(mv);
+        mv.visitJumpInsn(IFEQ, endLabel);
+        getChild(1).generateBytecode(mv);
+        mv.visitJumpInsn(GOTO, startLabel);
+
+
+        mv.visitLabel(endLabel);
+        
+        
     }
 }

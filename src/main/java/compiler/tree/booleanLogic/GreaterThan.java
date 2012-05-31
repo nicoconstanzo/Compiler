@@ -33,30 +33,58 @@ public class GreaterThan extends Node {
 
 
     @Override
-    public void analyze(SymbolTable symbolTable) {
-        super.analyze(symbolTable);
-        setTypeDef(Type.BOOLEAN);
-    }
-
-
-
-    @Override
     public void generateBytecode(MethodVisitor mv) {
         Label booleanLabel = new Label();
         Label endLabel = new Label();
         Node child0 = getChild(0);
         Node child1 = getChild(1);
         if(child0.getTypeDef().isInteger() && child1.getTypeDef().isInteger()){
-            mv.visitJumpInsn(IF_ICMPGE,booleanLabel);
             child0.generateBytecode(mv);
-            mv.visitLabel(booleanLabel);
-            mv.visitJumpInsn(GOTO, endLabel);
             child1.generateBytecode(mv);
+            mv.visitJumpInsn(IF_ICMPLE,booleanLabel);
+            mv.visitInsn(ICONST_1);
+            mv.visitJumpInsn(GOTO, endLabel);
+            mv.visitLabel(booleanLabel);
+            mv.visitInsn(ICONST_0);
             mv.visitLabel(endLabel);
         }else if(child0.getTypeDef().isFloat() && child1.getTypeDef().isFloat()){
-            mv.visitInsn(FCMPG);
+            generateByteCodeForFloat(mv, child0, child1, booleanLabel, endLabel);
+
+        }else{
+            child0.generateBytecode(mv);
+            if (child0.getTypeDef().isInteger())  {
+                mv.visitInsn(I2F);
+            }
+            child1.generateBytecode(mv);
+            if(child1.getTypeDef().isInteger()){
+                mv.visitInsn(I2F);
+            }
+            generateByteCodeForFloat(mv, child0, child1, booleanLabel, endLabel);
         }
 
     }
+
+
+    private static void generateByteCodeForFloat(MethodVisitor mv, Node child0, Node child1, Label booleanLabel, Label endLabel){
+        mv.visitInsn(FCMPL);
+        mv.visitJumpInsn(IFLE,booleanLabel);
+        child0.generateBytecode(mv);
+        mv.visitInsn(ICONST_1);
+        mv.visitJumpInsn(GOTO, endLabel);
+        mv.visitLabel(booleanLabel);
+        child1.generateBytecode(mv);
+        mv.visitInsn(ICONST_0);
+        mv.visitLabel(endLabel);
+    }
+
+
+
+
+    @Override
+    public void analyze(SymbolTable symbolTable) {
+        super.analyze(symbolTable);
+        setTypeDef(Type.BOOLEAN);
+    }
+
 
 }
