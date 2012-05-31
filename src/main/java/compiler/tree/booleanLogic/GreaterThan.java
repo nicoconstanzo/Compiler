@@ -54,7 +54,7 @@ public class GreaterThan extends Node {
             child1.generateBytecode(mv);
             mv.visitLabel(endLabel);
         }else if(child0.getTypeDef().isFloat() && child1.getTypeDef().isFloat()){
-
+            mv.visitInsn(FCMPG);
         }
 
     }
