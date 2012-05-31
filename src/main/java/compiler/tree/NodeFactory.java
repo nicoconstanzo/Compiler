@@ -2,6 +2,13 @@ package compiler.tree;
 
 import compiler.MyLexer;
 
+import compiler.tree.booleanLogic.Equals;
+import compiler.tree.booleanLogic.GreaterThan;
+import compiler.tree.booleanLogic.LessThan;
+import compiler.tree.controlStructure.Else;
+import compiler.tree.controlStructure.If;
+import compiler.tree.controlStructure.Then;
+import compiler.tree.controlStructure.While;
 import compiler.tree.literals.LiteralBoolean;
 import compiler.tree.literals.LiteralFloat;
 import compiler.tree.literals.LiteralInteger;

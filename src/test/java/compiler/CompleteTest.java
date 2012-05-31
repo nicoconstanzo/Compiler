@@ -10,36 +10,38 @@ import java.sql.SQLOutput;
  * To change this template use File | Settings | File Templates.
  */
 public class CompleteTest {
-    
-    public static void main (String args[]){
-        //addTest();
-        //subTest();
+
+    public static void main(String args[]) {
+//        addTest();
+//        subTest();
 //        mulTest();
 //        boolTest();
 //        greaterThanTest();
 //        equalsTest();
 //        lessThanTest();
+//        whileTest();
+        andTest();
     }
 
 
-    public static void addTest(){
+    public static void addTest() {
         String a = "Hola ";
         int b = 3;
-        String c = a+b;
+        String c = a + b;
         System.out.println(c);
     }
 
-    public static void subTest(){
+    public static void subTest() {
         int a = 2;
         float b = 3;
-        float c = a-b;
+        float c = a - b;
         System.out.println(c);
     }
 
-    public static void mulTest(){
+    public static void mulTest() {
         int a = 2;
         int b = 3;
-        int c = a*b;
+        int c = a * b;
         System.out.println(c);
     }
 
@@ -55,7 +57,7 @@ public class CompleteTest {
     public static void greaterThanTest() {
         int a = 2;
         int b = 3;
-        if (a<b) {
+        if (a < b) {
             System.out.println(true);
         } else {
             System.out.println(false);
@@ -65,7 +67,7 @@ public class CompleteTest {
     public static void lessThanTest() {
         int a = 2;
         int b = 3;
-        if (a>b) {
+        if (a > b) {
             System.out.println(true);
         } else {
             System.out.println(false);
@@ -75,10 +77,31 @@ public class CompleteTest {
     public static void equalTest() {
         int a = 2;
         int b = 3;
-        if (a==b) {
+        if (a == b) {
             System.out.println(true);
         } else {
             System.out.println(false);
         }
     }
+
+    public static void andTest() {
+        int a = 2;
+        int b = 2;
+        int c = 4;
+
+        if ((a == b) & c==4) {
+            System.out.println(true);
+        } else {
+            System.out.println(false);
+        }
+    }
+
+    public static void whileTest() {
+
+        int counter = 0;
+        while (counter < 5) {
+            counter++;
+        }
+    }
 }
+
