@@ -54,35 +54,79 @@ public class CompleteTest {
         c = true;
     }
 
-    public static void greaterThanTest() {
-        float a = (float) 2.3;
+    public static void greaterThanIntegerTest() {
+        int a = 2;
+        int b = 3;
+        if (a<b) {
+            System.out.println(true);
+        } else {
+            System.out.println(false);
+        }
+    }
+
+    public static void greaterThanFloatTest() {
+        float a = (float) 2.4;
         float b = (float) 3.0;
-        System.out.println(a<b);
-//        if (a < b) {
-//            System.out.println(true);
-//        } else {
-//            System.out.println(false);
-//        }
+        if (a<b) {
+            System.out.println(true);
+        } else {
+            System.out.println(false);
+        }
+    }
+
+    public static void greaterThanTest() {
+        int a = 2;
+        float b = (float) 3.0;
+        if (a<b) {
+            System.out.println(true);
+        } else {
+            System.out.println(false);
+        }    }
+
+
+    public static void lessThanIntegerTest() {
+        int a = 2;
+        int b = 3;
+        if (a>b) {
+            System.out.println(true);
+        } else {
+            System.out.println(false);
+        }    }
+
+    public static void lessThanFloatTest() {
+        float a = (float) 2.4;
+        float b = (float) 3.0;
+
+        if (a>b) {
+            System.out.println(true);
+        } else {
+            System.out.println(false);
+        }
     }
 
     public static void lessThanTest() {
-        int a = 2;
-        int b = 3;
-        if (a > b) {
-            System.out.println(true);
-        } else {
-            System.out.println(false);
-        }
+        int a = 4;
+        float b = (float) 5.5;
+
+        System.out.println(a<b);
     }
 
     public static void equalTest() {
+        int a = 4;
+        float b = (float) 5.5;
+        System.out.println(a==b);
+    }
+
+    public static void equalIntegerTest() {
         int a = 2;
         int b = 3;
-        if (a == b) {
-            System.out.println(true);
-        } else {
-            System.out.println(false);
-        }
+        System.out.println(a==b);
+    }
+
+    public static void equalFloatTest() {
+        float a = (float) 2.4;
+        float b = (float) 3.0;
+        System.out.println(a==b);
     }
 
     public static void andTest() {
@@ -100,8 +144,21 @@ public class CompleteTest {
     public static void whileTest() {
 
         int counter = 0;
-        while (counter < 5) {
+        while (counter < 2.5f) {
             counter++;
+        }
+    }
+
+    public static void ifTest() {
+        int a;
+        a = 2;
+        int b;
+        b=1;
+
+        if (a > b) {
+            System.out.println("true");
+        } else {
+            System.out.println("false");
         }
     }
 }
