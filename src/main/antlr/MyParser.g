@@ -14,15 +14,17 @@ options {
 program: statement* EOF^;
 	
 /* Statements*/
-statement: printStatement|declarationStatement|assignStatement|ifStatement|whileStatement;
+statement: returnStatement|printStatement|declaration|assignStatement|ifStatement|whileStatement|functionStatement;
+functionStatement: FUNCTION^ ID L_PARENTHESIS declaration* R_PARENTHESIS RETURN typeSpec IS BEGIN statement* END;
 ifStatement: IF^ expression thenBlock elseBlock? END_IF!;
 thenBlock: THEN^ statement*;
 elseBlock: ELSE^ statement*;
 whileStatement: WHILE^ expression loopBlock END_LOOP!;
 loopBlock: LOOP^ statement*;
 printStatement: PRINT^ expression;
-declarationStatement: ID DECLARATION^ typeSpec;
+declaration: ID DECLARATION^ typeSpec;
 assignStatement: ID ASSIGN^ expression;
+returnStatement: RETURN^ expression;
 
 typeSpec: INTEGER_TYPE | FLOAT_TYPE | STRING_TYPE | BOOLEAN_TYPE;
 

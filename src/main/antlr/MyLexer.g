@@ -23,6 +23,12 @@ END_IF: 'end if';
 WHILE:'while';
 LOOP: 'loop';
 END_LOOP:'end loop';
+FUNCTION: 'function';
+BEGIN: 'begin';
+END: 'end';
+IS: 'is';
+RETURN: 'return';
+
 
 /* Operators */
 ADD:'+';
