@@ -15,7 +15,9 @@ program: statement* EOF^;
 	
 /* Statements*/
 statement: returnStatement|printStatement|declaration|assignStatement|ifStatement|whileStatement|functionStatement;
-functionStatement: FUNCTION^ ID L_PARENTHESIS declaration* R_PARENTHESIS RETURN typeSpec IS BEGIN statement* END;
+functionStatement: FUNCTION^ ID L_PARENTHESIS! parameter* R_PARENTHESIS! RETURN! typeSpec IS functionBlock;
+functionBlock:  BEGIN^ statement* END!;
+functionCall: ID L_PARENTHESIS^ expression* R_PARENTHESIS!
 ifStatement: IF^ expression thenBlock elseBlock? END_IF!;
 thenBlock: THEN^ statement*;
 elseBlock: ELSE^ statement*;
@@ -23,6 +25,7 @@ whileStatement: WHILE^ expression loopBlock END_LOOP!;
 loopBlock: LOOP^ statement*;
 printStatement: PRINT^ expression;
 declaration: ID DECLARATION^ typeSpec;
+parameter: declaration (COMMA! declaration)?;
 assignStatement: ID ASSIGN^ expression;
 returnStatement: RETURN^ expression;
 

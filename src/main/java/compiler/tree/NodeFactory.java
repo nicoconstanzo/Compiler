@@ -6,6 +6,7 @@ import compiler.tree.booleanLogic.Equals;
 import compiler.tree.booleanLogic.GreaterThan;
 import compiler.tree.booleanLogic.LessThan;
 import compiler.tree.controlStructure.*;
+import compiler.tree.functionStructure.FunctionCall;
 import compiler.tree.literals.LiteralBoolean;
 import compiler.tree.literals.LiteralFloat;
 import compiler.tree.literals.LiteralInteger;
@@ -94,7 +95,21 @@ public class NodeFactory {
                 case MyLexer.WHILE:
                     node = new While(token);
                     break;
-
+                case MyLexer.FUNCTION:
+                    node = new Function(token);
+                    break;
+                case MyLexer.IS:
+                    node = new Block(token);
+                    break;
+                case MyLexer.END:
+                    node= new Block(token);
+                    break;
+                case MyLexer.BEGIN:
+                    node= new Block(token);
+                    break;
+                case MyLexer.L_PARENTHESIS:
+                    node= new FunctionCall(token);
+                    break;
                 case MyLexer.EOF:
                     node = new Program(token);
                     break;

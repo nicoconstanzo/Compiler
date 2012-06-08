@@ -15,11 +15,7 @@ public class Symbol {
         this.value= value;
         this.type = type;
         this.index = index;
-
-
     }
-
-
 
     public Object getValue() {
         return value;

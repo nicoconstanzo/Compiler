@@ -28,6 +28,7 @@ BEGIN: 'begin';
 END: 'end';
 IS: 'is';
 RETURN: 'return';
+COMMA: ',';
 
 
 /* Operators */

@@ -1,4 +1,4 @@
-package compiler.tree.operations;
+package compiler.tree.functionStructure;
 
 import compiler.tree.Node;
 import compiler.tree.symbol.SymbolTable;
@@ -10,12 +10,12 @@ import java.util.Stack;
 /**
  * Created by IntelliJ IDEA.
  * User: NoePodesta
- * Date: 31/05/12
- * Time: 10:39
+ * Date: 07/06/12
+ * Time: 19:26
  * To change this template use File | Settings | File Templates.
  */
-public class Then extends Node {
-    public Then(Token token) {
+public class End extends Node {
+    public End(Token token) {
         super(token);    //To change body of overridden methods use File | Settings | File Templates.
     }
 

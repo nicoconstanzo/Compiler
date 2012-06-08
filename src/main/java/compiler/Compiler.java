@@ -31,7 +31,7 @@ public class Compiler {
             try {
                 Node ast = compiler.parse(file, true);
                 System.out.println("TREE:\n" + ast + "\n");
-                ast.analyze(new SymbolTable());
+                ast.analyze(new SymbolTable(null));
 //                ast.execute(new Stack<Object>() {
 //                    @Override
 //                    public Object push(Object o) {
@@ -46,10 +46,7 @@ public class Compiler {
 
                 ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_MAXS);
                 cw.visit(V1_6, ACC_PUBLIC + ACC_SUPER, fileName, null, "java/lang/Object", null);
-                MethodVisitor mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC,"main" , "([Ljava/lang/String;)V", null, null);
-
-                ast.generateBytecode(mv);
-                mv.visitMaxs(0,0);
+                ast.generateBytecode(cw);
                 byte[] bytecode = cw.toByteArray();
                 File outputFile = new File("src/test/generated", fileName + ".class");
                 FileOutputStream fstream = new FileOutputStream(outputFile);

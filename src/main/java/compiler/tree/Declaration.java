@@ -32,7 +32,7 @@ public class Declaration extends Node {
         Type type = getChild(1).getTypeDef();
         String name = getChild(0).getText();
         symbolTable.declare(name,type);
-        getChild(0).analyze(symbolTable);
+        getChild(0).analyze(symbolTable); //Visita el nodo y le dice que tipo es.
 
     }
 
